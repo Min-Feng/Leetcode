@@ -18,21 +18,25 @@ func hasPathSum(root *TreeNode, sum int) bool {
 	sum -= root.Val
 	stack = append(stack, []interface{}{root, sum})
 
-	for len(stack) != 0 {
-		item, stack := stack[len(stack)-1], stack[:len(stack)-1]
-		node := item[0].(*TreeNode)
-		sum = item[1].(int)
+	var item []interface{}
+	var curNode *TreeNode
+	var curSum int
 
-		if sum == 0 && node.Left == nil && node.Right == nil {
+	for len(stack) != 0 {
+		item, stack = stack[len(stack)-1], stack[:len(stack)-1]
+		curNode = item[0].(*TreeNode)
+		curSum = item[1].(int)
+
+		if curSum == 0 && curNode.Left == nil && curNode.Right == nil {
 			return true
 		}
 
-		if node.Left != nil {
-			stack = append(stack, []interface{}{node.Left, sum - node.Left.Val})
+		if curNode.Left != nil {
+			stack = append(stack, []interface{}{curNode.Left, curSum - curNode.Left.Val})
 		}
 
-		if node.Right != nil {
-			stack = append(stack, []interface{}{node.Right, sum - node.Right.Val})
+		if curNode.Right != nil {
+			stack = append(stack, []interface{}{curNode.Right, curSum - curNode.Right.Val})
 		}
 	}
 	return false
@@ -49,22 +53,25 @@ func hasPathSum2(root *TreeNode, sum int) bool {
 	nodeStack = append(nodeStack, root)
 	sumStack = append(sumStack, sum-root.Val)
 
-	for len(nodeStack) != 0 {
-		node, nodeStack := nodeStack[len(nodeStack)-1], nodeStack[:len(nodeStack)-1]
-		sum, sumStack = sumStack[len(sumStack)-1], sumStack[:len(sumStack)-1]
+	var cur_node *TreeNode
+	var cur_sum int
 
-		if sum == 0 && node.Left == nil && node.Right == nil {
+	for len(nodeStack) != 0 {
+		cur_node, nodeStack = nodeStack[len(nodeStack)-1], nodeStack[:len(nodeStack)-1]
+		cur_sum, sumStack = sumStack[len(sumStack)-1], sumStack[:len(sumStack)-1]
+
+		if cur_sum == 0 && cur_node.Left == nil && cur_node.Right == nil {
 			return true
 		}
 
-		if node.Left != nil {
-			nodeStack = append(nodeStack, root.Left)
-			sumStack = append(sumStack, sum-root.Left.Val)
+		if cur_node.Left != nil {
+			nodeStack = append(nodeStack, cur_node.Left)
+			sumStack = append(sumStack, cur_sum-cur_node.Left.Val)
 		}
 
-		if node.Right != nil {
-			nodeStack = append(nodeStack, root.Right)
-			sumStack = append(sumStack, sum-root.Right.Val)
+		if cur_node.Right != nil {
+			nodeStack = append(nodeStack, cur_node.Right)
+			sumStack = append(sumStack, cur_sum-cur_node.Right.Val)
 		}
 	}
 	return false
