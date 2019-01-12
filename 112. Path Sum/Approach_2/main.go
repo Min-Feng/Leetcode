@@ -1,6 +1,4 @@
-package iterations
-
-// https://leetcode.com/problems/path-sum/description/
+package Approach_2
 
 type TreeNode struct {
 	Val   int
@@ -8,7 +6,6 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-// with the help of stack. DFS would be better than BFS
 func hasPathSum(root *TreeNode, sum int) bool {
 	if root == nil {
 		return false

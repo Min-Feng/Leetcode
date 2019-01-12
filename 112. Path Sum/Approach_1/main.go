@@ -1,6 +1,4 @@
-package recursion
-
-// https://leetcode.com/problems/path-sum/description/
+package Approach_1
 
 type TreeNode struct {
 	Val   int
