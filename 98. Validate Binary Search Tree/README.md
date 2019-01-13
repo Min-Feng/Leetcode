@@ -26,9 +26,10 @@ MinInt:=^MaxInt
 根節點左子樹其數值應該介於,MinInt< root.Left.Val < root.Val  
 根節點右子樹其數值應該介於,root.Val< root.Right.Val < MaxInt  
 
-## Approach_2：   
+## Approach_2：[Link](Approach_2/main.go)   
 由於BST中序走訪後，一定是排序過大小的數列  
-進行中序走訪,若走訪過程檢查到沒有進行大小排序,則可認定不屬於BST
+進行中序走訪,若走訪過程檢查到沒有進行大小排序,則可認定不屬於BST  
+效能較差,原因沒想到為什麼
 
 ## Reference:
 [https://shannonhu.gitbooks.io/go-leetcode/content/98_validate_a_binary_search_tree.html](https://shannonhu.gitbooks.io/go-leetcode/content/98_validate_a_binary_search_tree.html)
