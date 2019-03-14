@@ -51,7 +51,7 @@ func isValidBST2(root *TreeNode) bool {
 		return true
 	}
 	var values []int
-	values = inOrder(root,values)
+	values = inOrder(root, values)
 	var pre int
 	for i, v := range values {
 		if i == 0 {
@@ -65,11 +65,11 @@ func isValidBST2(root *TreeNode) bool {
 	}
 	return true
 }
-func inOrder(root *TreeNode,values []int) []int {
+func inOrder(root *TreeNode, values []int) []int {
 	if root != nil {
-		values = inOrder(root.Left,values)
+		values = inOrder(root.Left, values)
 		values = append(values, root.Val)
-		values = inOrder(root.Right,values)
+		values = inOrder(root.Right, values)
 	}
 	return values
 }
