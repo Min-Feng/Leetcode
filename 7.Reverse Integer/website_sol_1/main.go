@@ -1,9 +1,9 @@
 package main
 
-// import (
-// 	"fmt"
-// 	"time"
-// )
+import (
+	"fmt"
+	"time"
+)
 
 func reverse(x int) int {
 	var newValue, inputValue int64
@@ -12,8 +12,8 @@ func reverse(x int) int {
 	for inputValue != 0 {
 		newValue = newValue*10 + inputValue%10
 		inputValue = inputValue / 10
-		// fmt.Println(newValue, inputValue)
-		// time.Sleep(1 * time.Second)
+		fmt.Println(newValue, inputValue)
+		time.Sleep(200 * time.Millisecond)
 	}
 
 	//如果發生overflow的現象,兩者數字一定不同

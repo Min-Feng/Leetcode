@@ -13,5 +13,6 @@
 ## website provide sol：[Link](my%20Sol1/main.go)
 1. 直接對數字進行處理
 2. 在go中,餘數的正負號與被除數相同,因此-5%3與-5%-3,答案都為-2
+3. 將餘數pop原來的數字,商數push到新的數字
 
 ## Reference
