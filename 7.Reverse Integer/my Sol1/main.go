@@ -13,6 +13,7 @@ func reverse(x int) int {
 		s = s[1:]
 	}
 
+	// 字串中的每一個字元都可以對應一個byte
 	s = reverseString([]byte(s))
 
 	n, err := strconv.ParseInt(s, 10, 64)
