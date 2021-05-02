@@ -58,6 +58,7 @@ func main() {
 // 看完解答, 疑惑 low 有可能 大於 high? 想不通
 // 我的迴圈中止條件, 稿的自己很亂
 
+// 解題時的 困難點
 // 1. 目標數字不存在時的中止條件
 // 2. pivot 的定義是? 單純 pivot := (high + low) / 2 會進入無窮迴圈
 //
@@ -67,6 +68,21 @@ func main() {
 // +1 -1 的運作, 真的有辦法 直接靠思考得知嗎
 // 還是只能用觀察法判斷, 可能進入迴圈 才事後補償
 // 我開始只有單純 right = pivot, left = pivot
+
+// 釐清思考方向
+// right = pivot - 1
+// left = pivot + 1
+// 因為 前面有先判斷 目標值 和 基準點數值是否相等
+// 不相等才會進入 移動 right left 的條件式
+// 判斷過是否相等 所以不需要使用 right = pivot 這種 pivot 策略
+// 直接加減1 進一步縮小範圍就好
+// 由於有 加減1 縮小範圍的動作, 所以 中止條件 left 是會大於 right 的
+//
+// 若是依照原本的 right = pivot 把判斷過的條件又包含在下次迴圈
+// 那等於沒進行判斷動作, 重複做一樣的事情!
+
+// 注意大數 相加, 改用 pivot = low + ((high - low) / 2)
+// https://ai.googleblog.com/2006/06/extra-extra-read-all-about-it-nearly.html
 
 // leetcode submit region begin(Prohibit modification and deletion)
 func search(nums []int, target int) int {
