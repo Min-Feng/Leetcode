@@ -67,3 +67,28 @@ func countCharactersV3(words []string, chars string) int {
 
 	return sum
 }
+
+func countCharacters(words []string, chars string) int {
+	target := make([]byte, 26)
+	for _, ch := range []byte(chars) {
+		target[ch-'a']++
+	}
+
+	var sum int
+	for i := 0; i < len(words); i++ {
+		sample := make([]byte, 26)
+		var count byte
+		for _, ch := range []byte(words[i]) {
+			index := ch - 'a'
+			sample[index]++
+			count++
+			if target[index] < sample[index] {
+				count = 0
+				break
+			}
+		}
+		sum += int(count)
+	}
+
+	return sum
+}
