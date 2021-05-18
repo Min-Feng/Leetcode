@@ -43,7 +43,7 @@ func countCharactersV1(words []string, chars string) int {
 }
 
 // 將 v2 兩個 loop 改成 一個
-func countCharactersV3(words []string, chars string) int {
+func countCharactersV2(words []string, chars string) int {
 	target := make([]byte, 26)
 	for _, ch := range []byte(chars) {
 		target[ch-'a']++
@@ -68,7 +68,7 @@ func countCharactersV3(words []string, chars string) int {
 	return sum
 }
 
-func countCharacters(words []string, chars string) int {
+func countCharactersV3(words []string, chars string) int {
 	target := make([]byte, 26)
 	for _, ch := range []byte(chars) {
 		target[ch-'a']++
