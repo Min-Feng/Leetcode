@@ -1,3 +1,3 @@
 module github.com/Min-Feng/Leetcode
 
-go 1.12
+go 1.16
