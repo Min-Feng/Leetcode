@@ -42,9 +42,75 @@ func findDuplicateV2(nums []int) int {
 	return 0
 }
 
-// https://medium.com/@orionssl/%E6%8E%A2%E7%B4%A2-floyd-cycle-detection-algorithm-934cdd05beb9
-func findDuplicateV3(nums []int) int {
-	return 0
+func findDuplicateFloydCycle(nums []int) int {
+	var EncounterIndex int
+	var slow, fast int // index 移動速度差異
+
+	for i := 0; i < len(nums); i++ {
+		if i == 0 {
+			slow = nums[0] // 其值是指向下一個節點的 index
+
+			fast = nums[0]
+			fast = nums[fast]
+		} else {
+			slow = nums[slow]
+
+			fast = nums[fast]
+			fast = nums[fast]
+		}
+
+		if fast == slow {
+			EncounterIndex = slow // 仔細想想
+			break
+		}
+	}
+
+	for i := 0; i < len(nums); i++ {
+		if i == 0 {
+			fast = nums[0]
+			slow = nums[EncounterIndex]
+		} else {
+			slow = nums[slow]
+			fast = nums[fast]
+		}
+
+		if fast == slow {
+			return fast // 仔細想想
+		}
+	}
+	return -1
+}
+
+func findDuplicateFloydCycleV2(nums []int) int {
+	// 看到很多 node 指向同一個 node
+	// 會猜 是否 link list 存在循環
+	//
+	// 又題目 範圍 限制範圍, 所以肯定 存在循環
+	// nums containing n + 1 integers where each integer is in the range [1, n]
+	start := 0
+
+	// 設置起點位置
+	fast := start
+	slow := start
+
+	for {
+		fast = nums[nums[fast]]
+		slow = nums[slow]
+		if fast == slow {
+			break
+		}
+	}
+
+	// reset position
+	fast = start
+
+	for {
+		fast = nums[fast]
+		slow = nums[slow]
+		if fast == slow {
+			return fast
+		}
+	}
 }
 
 // @lc code=end
