@@ -113,4 +113,24 @@ func removeDuplicatesV4(nums []int) int {
 	return len(nums)
 }
 
+// 若改成寫頭是「可以寫的位置」，即為寫頭以前的是寫入過的，當前位置是要準備寫入的位置。
+// 拿 index -2 位罝的數字當比較，中間是什麼就不重要了。
+// 因為有序，若讀頭數字 = 寫頭-2的數字，則中間的數字一定要相同
+// https://www.notion.so/80-Remove-Duplicates-from-Sorted-Array-II-M-3b11b56f08574893955367fbab22c94a
+func removeDuplicatesV5(nums []int) int {
+	if len(nums) <= 2 {
+		return len(nums)
+	}
+
+	write := 2
+	for read := 2; read < len(nums); read++ {
+		// 拿 index -2 位罝的數字當比較
+		if nums[write-2] != nums[read] {
+			nums[write] = nums[read]
+			write++
+		}
+	}
+	return write
+}
+
 // @lc code=end
