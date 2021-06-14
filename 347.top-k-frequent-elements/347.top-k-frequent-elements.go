@@ -10,6 +10,8 @@ import "sort"
 
 // https://leetcode.com/problems/top-k-frequent-elements/
 
+// https://www.notion.so/347-Top-K-Frequent-Elements-41230747de9e4362bf645160b2cfe6bb
+
 // Runtime: 12 ms, faster than 90.72% of Go online submissions for Top K Frequent Elements.
 // Memory Usage: 5.4 MB, less than 94.16% of Go online submissions for Top K Frequent Elements.
 //
